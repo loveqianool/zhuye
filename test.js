@@ -255,10 +255,14 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-<video poster="${url}" id="player" playsinline controls>
-    <source src="${url}" type="video/mp4" />
-    <source src="${url}" type="video/webm" />
-</video>
+<div class="plyr__video-embed" id="player">
+    <iframe
+        src="${url}"
+        allowfullscreen
+        allowtransparency
+        allow="autoplay"
+    ></iframe>
+</div>
 	<br>
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
