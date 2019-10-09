@@ -4,9 +4,8 @@ document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@0.4.3/d
 document.write('<script src="//cdn.jsdelivr.net/npm/markdown-it@9.1.0/dist/markdown-it.min.js"></script>');
 document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>.mdui-typo-headline{padding:0 1pc 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
 
-document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.25.0/DPlayer.min.css" />');
-document.write('<div id="dplayer"></div>');
-document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.25.0/DPlayer.min.js"></script>');
+document.write('<link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />');
+document.write('<script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>');
 
 // 初始化页面，并载入必要资源
 function init(){
@@ -256,14 +255,10 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-document.write('<script>
-const dp = new DPlayer({
-    container: document.getElementById('dplayer'),
-    video: {
-        url: '${url}',
-    },
-});
-</script>');
+<video poster="${url}" id="player" playsinline controls>
+    <source src="${url}" type="video/mp4" />
+    <source src="${url}" type="video/webm" />
+</video>
 	<br>
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
