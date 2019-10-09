@@ -255,13 +255,12 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-<div class="plyr__video-embed" id="player">
-    <iframe
-        src="${url}"
-        allowfullscreen
-        allowtransparency
-        allow="autoplay"
-    ></iframe>
+	const player = new Plyr('video', {captions: {active: true}});
+	window.player = player;
+<div class="container">
+	<video controls crossorigin playsinline poster="${url}">
+	 <source src="${url}" type="video/mp4">
+	</video>
 </div>
 	<br>
 	<!-- 固定标签 -->
