@@ -257,47 +257,12 @@ function file_video(path){
 <div class="mdui-container-fluid">
 	<br>
 <script>
-    var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
-    const dp = new DPlayer({
-        container: document.getElementById('dplayer'),
-        autoplay: true,
-        video: {
-            url: '${url}',
-            type: 'customHls',
-            customType: {
-                'customHls': function (video, player) {
-                    const hls = new Hls({
-                        debug: false,
-                        // Other hlsjsConfig options provided by hls.js
-                        p2pConfig: {
-                            logLevel: 'debug',
-                            live: false,        // 如果是直播设为true
-                            // Other p2pConfig options provided by CDNBye
-                        }
-                    });
-                    hls.loadSource(video.src);
-                    hls.attachMedia(video);
-                    hls.p2pEngine.on('stats', function (stats) {
-                        _totalP2PDownloaded = stats.totalP2PDownloaded;
-                        _totalP2PUploaded = stats.totalP2PUploaded;
-                        updateStats();
-                    }).on('peerId', function (peerId) {
-                        _peerId = peerId;
-                    }).on('peers', function (peers) {
-                        _peerNum = peers.length;
-                        updateStats();
-                    });
-
-                }
-            }
-        }
-    });
-
-    function updateStats() {
-        var text = 'CDNBye P2P正在为您加速' + (_totalP2PDownloaded/1024).toFixed(2)
-            + 'MB 已分享' + (_totalP2PUploaded/1024).toFixed(2) + 'MB' + ' 连接节点' + _peerNum + '个';
-        document.getElementById('stats').innerText = text
-    }
+const dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+    video: {
+        url: '${url}',
+    },
+});
 </script>
 	<br>
 	<!-- 固定标签 -->
@@ -432,4 +397,3 @@ $(function(){
     
     render(path);
 });
-
