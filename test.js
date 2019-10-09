@@ -256,14 +256,14 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-<script>
+document.write('<script>
 const dp = new DPlayer({
     container: document.getElementById('dplayer'),
     video: {
         url: '${url}',
     },
 });
-</script>
+</script>');
 	<br>
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
